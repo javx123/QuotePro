@@ -20,34 +20,40 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="z9a-8q-w7A">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="444.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="222.5"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b2D-iU-dbC">
                                 <rect key="frame" x="16" y="70" width="343" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hvc-Qj-gIH">
                                 <rect key="frame" x="16" y="102" width="343" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aev-30-mRw">
-                                <rect key="frame" x="219" y="476" width="103" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aev-30-mRw">
+                                <rect key="frame" x="212" y="242.5" width="103" height="30"/>
                                 <state key="normal" title="Random Image"/>
                                 <connections>
                                     <action selector="generateImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GQp-Ru-jXd"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZzG-Mu-71j">
-                                <rect key="frame" x="52" y="476" width="103" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZzG-Mu-71j">
+                                <rect key="frame" x="60" y="242.5" width="103" height="30"/>
                                 <state key="normal" title="Random Quote"/>
                                 <connections>
                                     <action selector="generateQuote:" destination="BYZ-38-t0r" eventType="touchUpInside" id="c3U-Mt-2cq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z0m-jF-HEe">
+                                <rect key="frame" x="170" y="303" width="34" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="saveQuoteAndImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dV5-q6-34Z"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -59,9 +65,13 @@
                             <constraint firstItem="z9a-8q-w7A" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="R81-k7-ugg"/>
                             <constraint firstItem="z9a-8q-w7A" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="UFE-if-O9Q"/>
                             <constraint firstItem="b2D-iU-dbC" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="WJD-sc-rt9"/>
+                            <constraint firstItem="Aev-30-mRw" firstAttribute="top" secondItem="z9a-8q-w7A" secondAttribute="bottom" constant="20" id="YxH-1l-kmR"/>
+                            <constraint firstItem="ZzG-Mu-71j" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="60" id="ZQD-VN-XGb"/>
                             <constraint firstItem="b2D-iU-dbC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="isv-e7-u69"/>
-                            <constraint firstItem="z9a-8q-w7A" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="2:3" id="kLo-Y1-5XR"/>
+                            <constraint firstItem="z9a-8q-w7A" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="1:3" id="kLo-Y1-5XR"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Aev-30-mRw" secondAttribute="trailing" constant="60" id="lqs-1d-y3m"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="b2D-iU-dbC" secondAttribute="trailing" constant="16" id="oXX-f9-Qha"/>
+                            <constraint firstItem="ZzG-Mu-71j" firstAttribute="top" secondItem="z9a-8q-w7A" secondAttribute="bottom" constant="20" id="pXJ-OO-9o8"/>
                             <constraint firstItem="Hvc-Qj-gIH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="vCA-cd-xuX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -70,6 +80,7 @@
                         <outlet property="authorLabel" destination="Hvc-Qj-gIH" id="ui7-W9-WNF"/>
                         <outlet property="imageView" destination="z9a-8q-w7A" id="UxP-tF-MhX"/>
                         <outlet property="quoteLabel" destination="b2D-iU-dbC" id="43L-yZ-2Ct"/>
+                        <outlet property="saveQuoteAndImage" destination="Z0m-jF-HEe" id="nqo-Ta-Trf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -40,6 +40,8 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func saveQuoteAndImage(_ sender: Any) {
+    }
     
     
 

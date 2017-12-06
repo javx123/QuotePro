@@ -11,7 +11,7 @@ import UIKit
 class LoremPixelAPI {
     
     class func generateImage(completion:@escaping (_ randImagg: UIImage) -> Void){
-        let imageURL = URL(string: "http://lorempixel.com/200/300")!
+        let imageURL = URL(string: "http://lorempixel.com/300/200")!
 
         
         let session = URLSession(configuration: URLSessionConfiguration.default, delegate: nil, delegateQueue: nil)
