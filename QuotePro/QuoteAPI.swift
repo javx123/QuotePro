@@ -8,9 +8,9 @@
 
 import UIKit
 
-class ForismaticAPI {
+class QuoteAPI {
     
-    class func getRandQuote(completion: @escaping (_ author: String,_ quote: String) -> Void) {
+    class func getRandQuote(completion: @escaping (_ quote: Quote) -> Void) {
         var apiURL = URL(string: "http://api.forismatic.com/api/1.0/")!
         let parameters = ["method":"getQuote",
                           "format":"json",
@@ -48,7 +48,9 @@ class ForismaticAPI {
             let quote = quoteInfo["quoteText"] as? String
             let author = quoteInfo["quoteAuthor"] as? String
             
-            completion(quote!, author!)
+            let quoteObject = Quote(quote: quote!, author: author!)
+            
+            completion(quoteObject)
             
         }
         task.resume()

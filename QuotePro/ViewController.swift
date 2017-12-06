@@ -14,6 +14,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var authorLabel: UILabel!
     
     @IBOutlet weak var imageView: UIImageView!
+    var currentQuote: Quote?
+    var currentPhoto: Photo?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -23,24 +26,27 @@ class ViewController: UIViewController {
 }
     
     @IBAction func generateQuote(_ sender: Any) {
-        ForismaticAPI.getRandQuote { (quote, author) in
+        QuoteAPI.getRandQuote { (quote) in
             OperationQueue.main.addOperation {
-                self.authorLabel.text = author
-                self.quoteLabel.text = quote
+                self.authorLabel.text = quote.author
+                self.quoteLabel.text = quote.quote
+                self.currentQuote = quote
             }
         }
     }
     
     
     @IBAction func generateImage(_ sender: Any) {
-        LoremPixelAPI.generateImage { (image) in
+        ImageAPI.generateImage { (photo) in
             OperationQueue.main.addOperation {
-                self.imageView.image = image
+                self.imageView.image = photo.image
+                self.currentPhoto = photo
             }
         }
     }
     
     @IBAction func saveQuoteAndImage(_ sender: Any) {
+    
     }
     
     

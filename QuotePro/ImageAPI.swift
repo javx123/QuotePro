@@ -8,16 +8,15 @@
 
 import UIKit
 
-class LoremPixelAPI {
+class ImageAPI {
     
-    class func generateImage(completion:@escaping (_ randImagg: UIImage) -> Void){
+    class func generateImage(completion:@escaping (_ photo: Photo) -> Void){
         let imageURL = URL(string: "http://lorempixel.com/300/200")!
 
         
         let session = URLSession(configuration: URLSessionConfiguration.default, delegate: nil, delegateQueue: nil)
         
         let task = session.dataTask(with: imageURL) { (data, response, error) in
-            
             
             if (error == nil ){
                 // Success
@@ -30,9 +29,10 @@ class LoremPixelAPI {
             }
             
 //            Image Creation
-            let image =  UIImage(data: data!)
+            let image : UIImage =  UIImage(data: data!)!
+            let photo = Photo(image: image)
             
-            completion(image!)
+            completion(photo)
 
         }
         
