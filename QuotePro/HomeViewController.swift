@@ -8,9 +8,9 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, AddEntryProtocol {
     @IBOutlet weak var tableView: UITableView!
-    var savedEntries:[Quote]?
+    var savedEntries:[Quote] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,10 +20,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let savedEntries = savedEntries {
             return savedEntries.count
-        }
-        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -33,18 +30,31 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             else{
                 fatalError("The dequeued cell is not an instance of NewsTableViewCell.")
         }
-        let savedEntry = savedEntries?[indexPath.row]
+        let savedEntry = savedEntries[indexPath.row]
         
-//        cell.quoteImage.image
-//        cell.quoteLabel.text
-//        cell.authorLabel.text
+        cell.quoteImage.image = savedEntry.entryPhoto?.image
+        cell.quoteLabel.text = savedEntry.quote
+        cell.authorLabel.text = savedEntry.author
         
         return cell
-        
 
     }
     
+//    Mark: Custom Protocol
+    func saveEntry(quote: Quote) {
+        savedEntries.append(quote)
+        
+        let indexPath = IndexPath(row: (savedEntries.count - 1), section: 0)
+        tableView.insertRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+    }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "addEntry" {
+            let navController  = segue.destination as? UINavigationController
+            let controller = navController?.viewControllers.first as? ViewController
+            controller?.delegate = self
+        }
+    }
     
     
     

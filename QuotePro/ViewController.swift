@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol AddEntryProtocol: class {
+    func saveEntry(quote: Quote)
+}
+
 class ViewController: UIViewController {
 
     @IBOutlet weak var quoteLabel: UILabel!
@@ -17,9 +21,14 @@ class ViewController: UIViewController {
     var currentQuote: Quote?
     var currentPhoto: Photo?
     
+    weak var delegate: AddEntryProtocol?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.navigationController?.navigationBar.isTranslucent = false
+        
         generateImage(self)
         generateQuote(self)
 
@@ -46,7 +55,13 @@ class ViewController: UIViewController {
     }
     
     @IBAction func saveQuoteAndImage(_ sender: Any) {
-    
+        currentQuote?.entryPhoto = currentPhoto
+        
+        delegate?.saveEntry(quote: currentQuote!)
+        self.dismiss(animated: true, completion: nil)
+    }
+    @IBAction func cancelEntry(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     
