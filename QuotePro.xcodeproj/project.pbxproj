@@ -19,6 +19,8 @@
 		2DAFE7C51FD88C4600EFD04B /* SavedEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAFE7C41FD88C4600EFD04B /* SavedEntryTableViewCell.swift */; };
 		2DAFE7C71FD8901900EFD04B /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAFE7C61FD8901900EFD04B /* Photo.swift */; };
 		2DAFE7C91FD8901D00EFD04B /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAFE7C81FD8901D00EFD04B /* Quote.swift */; };
+		2DAFE7CB1FD8A79600EFD04B /* QuoteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DAFE7CA1FD8A79600EFD04B /* QuoteView.xib */; };
+		2DAFE7CD1FD8A7B000EFD04B /* QuoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAFE7CC1FD8A7B000EFD04B /* QuoteView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		2DAFE7C41FD88C4600EFD04B /* SavedEntryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedEntryTableViewCell.swift; sourceTree = "<group>"; };
 		2DAFE7C61FD8901900EFD04B /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		2DAFE7C81FD8901D00EFD04B /* Quote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
+		2DAFE7CA1FD8A79600EFD04B /* QuoteView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuoteView.xib; sourceTree = "<group>"; };
+		2DAFE7CC1FD8A7B000EFD04B /* QuoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +78,8 @@
 				2DAFE7C61FD8901900EFD04B /* Photo.swift */,
 				2DAFE7C81FD8901D00EFD04B /* Quote.swift */,
 				2DAFE7AB1FD8440A00EFD04B /* Main.storyboard */,
+				2DAFE7CA1FD8A79600EFD04B /* QuoteView.xib */,
+				2DAFE7CC1FD8A7B000EFD04B /* QuoteView.swift */,
 				2DAFE7C41FD88C4600EFD04B /* SavedEntryTableViewCell.swift */,
 				2DAFE7BC1FD8466300EFD04B /* QuoteAPI.swift */,
 				2DAFE7BE1FD85E0900EFD04B /* ImageAPI.swift */,
@@ -147,6 +153,7 @@
 				2DAFE7B51FD8440A00EFD04B /* LaunchScreen.storyboard in Resources */,
 				2DAFE7B21FD8440A00EFD04B /* Assets.xcassets in Resources */,
 				2DAFE7AD1FD8440A00EFD04B /* Main.storyboard in Resources */,
+				2DAFE7CB1FD8A79600EFD04B /* QuoteView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,6 +165,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DAFE7C71FD8901900EFD04B /* Photo.swift in Sources */,
+				2DAFE7CD1FD8A7B000EFD04B /* QuoteView.swift in Sources */,
 				2DAFE7AA1FD8440A00EFD04B /* ViewController.swift in Sources */,
 				2DAFE7BD1FD8466300EFD04B /* QuoteAPI.swift in Sources */,
 				2DAFE7A81FD8440A00EFD04B /* AppDelegate.swift in Sources */,
