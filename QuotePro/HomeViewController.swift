@@ -39,6 +39,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 140.0
+    }
+    
 //    Mark: Custom Protocol
     func saveEntry(quote: Quote) {
         savedEntries.append(quote)
@@ -80,9 +84,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             self.present(shareVC, animated: true, completion: nil)
             
-            shareVC.completionWithItemsHandler = {(activity, success, items, error) in
-                quoteView?.removeFromSuperview()
-            }
         }
     }
 
