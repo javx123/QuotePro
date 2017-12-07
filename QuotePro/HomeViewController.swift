@@ -56,20 +56,52 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    
-    
-    
-    
-    
+    @IBAction func sendQuoteOnline(_ sender: UITapGestureRecognizer) {
+        print("Share Quote")
+        let indexPath = self.tableView.indexPathForRow(at: sender.location(in: self.tableView))
+        let selectedQuote = savedEntries[indexPath!.row]
+        
+        if let objects = Bundle.main.loadNibNamed("QuoteView", owner: nil, options: [:]){
+            let quoteView = objects.first as? QuoteView
+            quoteView?.translatesAutoresizingMaskIntoConstraints = false
+            self.view.addSubview(quoteView!)
+            
+//            HOW CAN I CREATE AN IMAGE THAT IS THE SAME SIZE, BUT WITHOUT USING CONSTRAINTS, OR ADDING TO SUBVIEW? SETTING FRAMES EQUAL DOESN'T SEEM TO WORK
+            //            quoteView?.frame = self.tableView.frame
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+            quoteView?.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
+            quoteView?.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
+            quoteView?.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
+            quoteView?.heightAnchor.constraint(equalTo: view.heightAnchor, constant: 0).isActive = true
+            
+            quoteView?.setupWithQuote(quote: selectedQuote)
+            
+            let image = self.snapShot(view: quoteView!)
+            
+            let shareVC: UIActivityViewController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+            
+            self.present(shareVC, animated: true, completion: nil)
+            
+            shareVC.completionWithItemsHandler = {(activity, success, items, error) in
+                quoteView?.removeFromSuperview()
+            }
+        }
+        
+        
+    
+        
     }
-    */
+    
+    
+    
+    
+//    Mark: Image from View
+    func snapShot(view:UIView) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(view.bounds.size, true, 0)
+        view.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image!
+    }
 
 }

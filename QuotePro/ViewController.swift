@@ -20,6 +20,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     var currentQuote: Quote?
     var currentPhoto: Photo?
+    var quoteView: QuoteView?
     
     weak var delegate: AddEntryProtocol?
     
@@ -28,30 +29,65 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.isToolbarHidden = false
         
-        generateImage(self)
-        generateQuote(self)
+        
+        generateImage()
+        generateQuote()
+        
+            if let objects = Bundle.main.loadNibNamed("QuoteView", owner: nil, options: [:]){
+                quoteView = objects.first as? QuoteView
+                self.view.addSubview(quoteView!)
+        }
+        quoteView?.translatesAutoresizingMaskIntoConstraints = false
 
+        quoteView?.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
+        quoteView?.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
+        quoteView?.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
+        quoteView?.heightAnchor.constraint(equalTo: view.heightAnchor, constant: 0).isActive = true
+        
 }
     
-    @IBAction func generateQuote(_ sender: Any) {
+    override func viewWillAppear(_ animated: Bool) {
+        let randImageButton = UIBarButtonItem(title: "Random Image", style: UIBarButtonItemStyle.plain, target: self, action: #selector(generateImage))
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        
+        let randQuoteButton = UIBarButtonItem(title: "Random Quote", style: UIBarButtonItemStyle.plain, target: self, action: #selector(generateQuote))
+        
+//        self.navigationController?.toolbar.items = [randImageButton]
+        self.toolbarItems = [randQuoteButton, flexibleSpace, randImageButton]
+    }
+    
+    
+    
+    
+    
+    
+    @objc func generateQuote() {
         QuoteAPI.getRandQuote { (quote) in
             OperationQueue.main.addOperation {
-                self.authorLabel.text = quote.author
-                self.quoteLabel.text = quote.quote
                 self.currentQuote = quote
+                self.currentQuote?.entryPhoto? = self.currentPhoto!
+//                quote.entryPhoto = self.currentPhoto!
+//                self.quoteView?.setupWithQuote(quote: self.currentQuote!)
+                self.refreshQuoteView()
+            }
+        }
+    }
+
+    @objc func generateImage() {
+        ImageAPI.generateImage { (photo) in
+            OperationQueue.main.addOperation {
+                self.quoteView?.quoteImage.image = photo.image
+                self.currentPhoto = photo
+                
             }
         }
     }
     
-    
-    @IBAction func generateImage(_ sender: Any) {
-        ImageAPI.generateImage { (photo) in
-            OperationQueue.main.addOperation {
-                self.imageView.image = photo.image
-                self.currentPhoto = photo
-            }
-        }
+    func refreshQuoteView(){
+        self.currentQuote?.entryPhoto = self.currentPhoto
+        self.quoteView?.setupWithQuote(quote: self.currentQuote!)
     }
     
     @IBAction func saveQuoteAndImage(_ sender: Any) {
