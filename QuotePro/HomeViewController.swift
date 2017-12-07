@@ -58,21 +58,16 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBAction func sendQuoteOnline(_ sender: UITapGestureRecognizer) {
         print("Share Quote")
-        let indexPath = self.tableView.indexPathForRow(at: sender.location(in: self.tableView))
-        let selectedQuote = savedEntries[indexPath!.row]
+        
+        guard let indexPath = self.tableView.indexPathForRow(at: sender.location(in: self.tableView))
+            else{return}
+        let selectedQuote = savedEntries[indexPath.row]
         
         if let objects = Bundle.main.loadNibNamed("QuoteView", owner: nil, options: [:]){
             let quoteView = objects.first as? QuoteView
-            quoteView?.translatesAutoresizingMaskIntoConstraints = false
-            self.view.addSubview(quoteView!)
-            
-//            HOW CAN I CREATE AN IMAGE THAT IS THE SAME SIZE, BUT WITHOUT USING CONSTRAINTS, OR ADDING TO SUBVIEW? SETTING FRAMES EQUAL DOESN'T SEEM TO WORK
-            //            quoteView?.frame = self.tableView.frame
 
-            quoteView?.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
-            quoteView?.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
-            quoteView?.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
-            quoteView?.heightAnchor.constraint(equalTo: view.heightAnchor, constant: 0).isActive = true
+            quoteView?.frame = self.tableView.frame
+
             
             quoteView?.setupWithQuote(quote: selectedQuote)
             
@@ -98,7 +93,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 //    Mark: Image from View
     func snapShot(view:UIView) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(view.bounds.size, true, 0)
-        view.layer.render(in: UIGraphicsGetCurrentContext()!)
+//        view.layer.render(in: UIGraphicsGetCurrentContext()!)
+        view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return image!

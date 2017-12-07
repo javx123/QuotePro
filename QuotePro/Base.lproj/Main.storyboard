@@ -37,13 +37,13 @@
                                                         <constraint firstAttribute="height" constant="71" id="xEO-IH-Apa"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ekz-2v-3PE">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ekz-2v-3PE">
                                                     <rect key="frame" x="133" y="19" width="227" height="12"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5HA-UV-NVJ">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5HA-UV-NVJ">
                                                     <rect key="frame" x="133" y="39" width="242" height="24"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <nil key="textColor"/>
@@ -69,7 +69,6 @@
                                             <outlet property="imageView" destination="w2y-wD-pmP" id="QeE-Pt-Mjf"/>
                                             <outlet property="quoteImage" destination="w2y-wD-pmP" id="IUp-3v-Ut4"/>
                                             <outlet property="quoteLabel" destination="ekz-2v-3PE" id="FYQ-0A-8bW"/>
-                                            <outletCollection property="gestureRecognizers" destination="vpL-cD-Edw" appends="YES" id="AAr-im-LDS"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -80,6 +79,7 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="zuy-Hk-mqx" firstAttribute="leading" secondItem="eeX-g3-qAU" secondAttribute="leading" id="H0f-LA-haz"/>
                             <constraint firstItem="zuy-Hk-mqx" firstAttribute="top" secondItem="eeX-g3-qAU" secondAttribute="top" id="Ioi-SG-XZB"/>
@@ -87,6 +87,9 @@
                             <constraint firstItem="zuy-Hk-mqx" firstAttribute="trailing" secondItem="eeX-g3-qAU" secondAttribute="trailing" id="kKs-PQ-esc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eeX-g3-qAU"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="ArS-Sa-pjo" appends="YES" id="Cxk-BY-IaI"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="YHY-hk-ZdS">
                         <barButtonItem key="leftBarButtonItem" style="plain" systemItem="edit" id="Ciq-cq-mez"/>
@@ -101,9 +104,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wMc-de-Ro7" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="vpL-cD-Edw">
+                <tapGestureRecognizer id="ArS-Sa-pjo">
                     <connections>
-                        <action selector="sendQuoteOnline:" destination="YUW-yw-FV9" id="u0Y-vc-Alp"/>
+                        <action selector="sendQuoteOnline:" destination="YUW-yw-FV9" id="XBl-r5-c6M"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
