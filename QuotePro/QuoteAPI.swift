@@ -43,8 +43,6 @@ class QuoteAPI {
             }
             
             guard let quoteInfo = json as? [String: Any] else {return}
-            
-//            print(quoteInfo)
             let quote = quoteInfo["quoteText"] as? String
             let author = quoteInfo["quoteAuthor"] as? String
             
@@ -58,6 +56,10 @@ class QuoteAPI {
     }
 
 }
+
+
+
+//Mark: Extras
 
 
 protocol URLQueryParameterStringConvertible {

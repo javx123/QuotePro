@@ -53,23 +53,15 @@ class ViewController: UIViewController {
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
         
         let randQuoteButton = UIBarButtonItem(title: "Random Quote", style: UIBarButtonItemStyle.plain, target: self, action: #selector(generateQuote))
-        
-//        self.navigationController?.toolbar.items = [randImageButton]
+    
         self.toolbarItems = [randQuoteButton, flexibleSpace, randImageButton]
     }
-    
-    
-    
-    
-    
     
     @objc func generateQuote() {
         QuoteAPI.getRandQuote { (quote) in
             OperationQueue.main.addOperation {
                 self.currentQuote = quote
                 self.currentQuote?.entryPhoto? = self.currentPhoto!
-//                quote.entryPhoto = self.currentPhoto!
-//                self.quoteView?.setupWithQuote(quote: self.currentQuote!)
                 self.refreshQuoteView()
             }
         }

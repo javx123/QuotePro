@@ -14,11 +14,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
 
-
+    
+//    Mark: TableView Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             return savedEntries.count
     }
@@ -48,6 +47,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.insertRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
     }
     
+    
+//    Mark: Segue Method
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addEntry" {
             let navController  = segue.destination as? UINavigationController
@@ -56,6 +57,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+
+//    Mark: Share Online 
     @IBAction func sendQuoteOnline(_ sender: UITapGestureRecognizer) {
         print("Share Quote")
         
@@ -81,19 +84,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 quoteView?.removeFromSuperview()
             }
         }
-        
-        
-    
-        
     }
-    
-    
-    
+
     
 //    Mark: Image from View
     func snapShot(view:UIView) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(view.bounds.size, true, 0)
-//        view.layer.render(in: UIGraphicsGetCurrentContext()!)
         view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
